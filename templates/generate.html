@@ -1,0 +1,37 @@
+<!-- <!DOCTYPE html>
+<html>
+<head><title>QR Generator</title></head>
+<body style="text-align: center;">
+    <h2>Generate QR Code</h2>
+    <form method="post">
+        <input type="text" name="qrdata" placeholder="Enter message or link" required style="width: 300px;">
+        <br><br>
+        <button type="submit">Generate</button>
+    </form>
+    {% if qr_path %}
+    <h3>Your QR Code:</h3>
+    <img src="{{ qr_path }}" alt="QR Code">
+    {% endif %}
+</body>
+</html> -->
+
+{% extends "base.html" %}
+{% block title %}QR Generator{% endblock %}
+
+{% block content %}
+    <h2>Generate QR Code</h2>
+    <form method="post">
+        <input type="text" name="qrdata" placeholder="Enter any message or link" required style="width: 300px;">
+        <br>
+        <button type="submit">Generate</button>
+    </form>
+
+    {% if qr_path %}
+        <h4>Your QR Code:</h4>
+        <img src="{{ qr_path }}" alt="QR Code">
+        <br>
+        <a href="{{ url_for('download', filename=qr_path.split('/')[-1]) }}" download>
+            <button>Download QR Code</button>
+        </a>
+    {% endif %}
+{% endblock %}

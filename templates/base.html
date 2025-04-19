@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}QR Code App{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='vm.ico') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            font-size: large;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #04AA6D;
+        }
+
+        .main {
+            padding: 20px;
+            margin-top: 60px; /* Push content below navbar */
+            text-align: center;
+            font-size: x-large;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+        <li><a href="/generate" class="{% if request.path == '/generate' %}active{% endif %}">QR Generator</a></li>
+        <li><a href="/scanner" class="{% if request.path == '/scanner' %}active{% endif %}">QR Scanner</a></li>
+        <!-- <li style="float:right"><a href="/logout">Logout</a></li> -->
+    </ul>
+
+    <div class="main">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

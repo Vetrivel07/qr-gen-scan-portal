@@ -1,0 +1,49 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>QR Scanner</title>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body style="text-align: center;">
+  <h2>QR Scanner</h2>
+  <div id="reader" style="width: 300px; margin: auto;"></div>
+  <script>
+    function onScanSuccess(decodedText, decodedResult) {
+        alert("Scanned: " + decodedText);
+        window.open(decodedText, "_blank");
+    }
+    const html5QrCode = new Html5Qrcode("reader");
+    html5QrCode.start(
+      { facingMode: "environment" },
+      { fps: 10, qrbox: 250 },
+      onScanSuccess
+    );
+  </script>
+</body>
+</html> -->
+
+
+{% extends "base.html" %}
+{% block title %}QR Scanner{% endblock %}
+
+{% block content %}
+    <h2>Scan Here!</h2>
+    <div id="reader" style="width: 450px; margin: auto;"></div>
+
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script>
+        function onScanSuccess(decodedText, decodedResult) {
+            alert("Scanned: " + decodedText);
+            window.open(decodedText, "_blank");
+        }
+        
+        const html5QrCode = new Html5Qrcode("reader");
+        html5QrCode.start(
+            { facingMode: "environment" },
+            { fps: 10, qrbox: 250 },
+            onScanSuccess
+        );
+    </script>
+{% endblock %}
+
+
